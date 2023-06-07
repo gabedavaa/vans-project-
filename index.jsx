@@ -10,6 +10,7 @@ import Layout from "./components/Layout";
 import Dashbroad from "./pages/Host/Dashbroad";
 import Income from "./pages/Host/Income";
 import Reviews from "./pages/Host/Reviews";
+import HostLayout from "./components/HostLayout";
 
 function App() {
   return (
@@ -17,12 +18,15 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/vans" element={<Vans />} />
-          <Route path="/vans/:id" element={<VanDetail />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/host" element={<Dashbroad />} />
-          <Route path="/host/income" element={<Income />} />
-          <Route path="/host/reviews" element={<Reviews />} />
+          <Route path="vans" element={<Vans />} />
+          <Route path="vans/:id" element={<VanDetail />} />
+          <Route path="about" element={<About />} />
+
+          <Route path="host" element={<HostLayout />}>
+            <Route index element={<Dashbroad />} />
+            <Route path="income" element={<Income />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
