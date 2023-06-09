@@ -1,17 +1,22 @@
 import React from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLoaderData, useLocation, useParams } from "react-router-dom";
+import { getVans } from "../../api";
+
+export function loader({ params }) {
+  return getVans(params.id);
+}
 
 export default function VanDetail() {
-  const params = useParams();
   const location = useLocation();
+  const van = useLoaderData();
+  // console.log(data);
+  // const [van, setVan] = React.useState(null);
 
-  const [van, setVan] = React.useState(null);
-
-  React.useEffect(() => {
-    fetch(`/api/vans/${params.id}`)
-      .then((res) => res.json())
-      .then((data) => setVan(data.vans));
-  }, [params.id]);
+  // React.useEffect(() => {
+  //   fetch(`/api/vans/${params.id}`)
+  //     .then((res) => res.json())
+  //     .then((data) => setVan(data.vans));
+  // }, [params.id]);
 
   return (
     <div className="van-detail-container">

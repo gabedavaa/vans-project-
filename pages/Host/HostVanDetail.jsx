@@ -1,21 +1,15 @@
 import React from "react";
-import { useParams, Link, Outlet, NavLink } from "react-router-dom";
+import { Link, NavLink, Outlet, useLoaderData } from "react-router-dom";
+import { getHostVans } from "../../api";
+
+export function loader({ params }) {
+  return getHostVans(params.id);
+}
 
 export default function HostVanDetail() {
-  const { id } = useParams();
-  const [currentVan, setCurrentVan] = React.useState(null);
+  const currentVan = useLoaderData();
 
-  React.useEffect(() => {
-    fetch(`/api/host/vans/${id}`)
-      .then((res) => res.json())
-      .then((data) => setCurrentVan(data.vans));
-  }, []);
-
-  if (!currentVan) {
-    return <h1>Loading...</h1>;
-  }
-
-  const activeStyle = {
+  const activeStyles = {
     fontWeight: "bold",
     textDecoration: "underline",
     color: "#161616",
@@ -23,9 +17,10 @@ export default function HostVanDetail() {
 
   return (
     <section>
-      <Link to={".."} relative="path" className="back-button">
+      <Link to=".." relative="path" className="back-button">
         &larr; <span>Back to all vans</span>
       </Link>
+
       <div className="host-van-detail-layout-container">
         <div className="host-van-detail">
           <img src={currentVan.imageUrl} />
@@ -42,19 +37,19 @@ export default function HostVanDetail() {
           <NavLink
             to="."
             end
-            style={({ isActive }) => (isActive ? activeStyle : null)}
+            style={({ isActive }) => (isActive ? activeStyles : null)}
           >
-            Detail
+            Details
           </NavLink>
           <NavLink
             to="pricing"
-            style={({ isActive }) => (isActive ? activeStyle : null)}
+            style={({ isActive }) => (isActive ? activeStyles : null)}
           >
             Pricing
           </NavLink>
           <NavLink
             to="photos"
-            style={({ isActive }) => (isActive ? activeStyle : null)}
+            style={({ isActive }) => (isActive ? activeStyles : null)}
           >
             Photos
           </NavLink>

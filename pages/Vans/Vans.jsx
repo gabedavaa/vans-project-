@@ -10,7 +10,6 @@ export default function Vans() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [error, setError] = React.useState(null);
   const vans = useLoaderData();
-  console.log(vans);
 
   const typeFilter = searchParams.get("type");
 
