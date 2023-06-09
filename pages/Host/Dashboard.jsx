@@ -1,13 +1,13 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 
-const Dashbroad = () => {
+const Dashboard = () => {
   return (
     <>
-      <h1>Dashbroad</h1>
+      <h1>Dashboard</h1>
       {/* <Outlet /> */}
     </>
   );
 };
 
-export default Dashbroad;
+export default Dashboard;

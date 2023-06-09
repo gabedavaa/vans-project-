@@ -1,5 +1,5 @@
 import React from "react";
-import Dashbroad from "../pages/Host/Dashbroad";
+import Dashboard from "../pages/Host/Dashboard";
 import { NavLink, Outlet } from "react-router-dom";
 import Income from "../pages/Host/Income";
 import Reviews from "../pages/Host/Reviews";
@@ -19,7 +19,7 @@ const HostLayout = () => {
           end
           style={({ isActive }) => (isActive ? activeStyle : null)}
         >
-          Dashbroad
+          Dashboard
         </NavLink>
         <NavLink
           to="income"
