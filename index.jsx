@@ -12,6 +12,7 @@ import Vans, { loader, loader as vansLoader } from "./pages/Vans/Vans";
 import VanDetail from "./pages/Vans/VanDetail";
 import "./server";
 import Layout from "./components/Layout";
+import Error from "./components/Error";
 import Dashbroad from "./pages/Host/Dashbroad";
 import Income from "./pages/Host/Income";
 import Reviews from "./pages/Host/Reviews";
@@ -27,7 +28,12 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<Layout />}>
       <Route path="/" element={<Home />} />
-      <Route path="vans" element={<Vans />} loader={vansLoader} />
+      <Route
+        path="vans"
+        element={<Vans />}
+        loader={vansLoader}
+        errorElement={<Error />}
+      />
       <Route path="vans/:id" element={<VanDetail />} />
       <Route path="about" element={<About />} />
 
