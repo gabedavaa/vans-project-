@@ -48,7 +48,12 @@ const router = createBrowserRouter(
         loader={vansLoader}
         errorElement={<Error />}
       />
-      <Route path="vans/:id" element={<VanDetail />} loader={vanDetailLoader} />
+      <Route
+        path="vans/:id"
+        element={<VanDetail />}
+        errorElement={<Error />}
+        loader={vanDetailLoader}
+      />
 
       <Route path="host" element={<HostLayout />}>
         <Route
@@ -69,12 +74,13 @@ const router = createBrowserRouter(
         <Route
           path="vans"
           element={<HostVans />}
+          errorElement={<Error />}
           loader={hostVansLoader}
-          // loader={async () => null}
         />
         <Route
           path="vans/:id"
           element={<HostVanDetail />}
+          errorElement={<Error />}
           loader={hostVansDetailLoader}
         >
           <Route

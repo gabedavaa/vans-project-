@@ -9,14 +9,6 @@ export function loader({ params }) {
 export default function VanDetail() {
   const location = useLocation();
   const van = useLoaderData();
-  // console.log(data);
-  // const [van, setVan] = React.useState(null);
-
-  // React.useEffect(() => {
-  //   fetch(`/api/vans/${params.id}`)
-  //     .then((res) => res.json())
-  //     .then((data) => setVan(data.vans));
-  // }, [params.id]);
 
   return (
     <div className="van-detail-container">
